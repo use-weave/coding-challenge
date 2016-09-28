@@ -25,7 +25,7 @@ We need you to create a form component that has an input field. When submitted, 
 
 Another component that is not connected to redux will be an `Item` component (already created in the components directory). That should be a simple component just for rendering a list item. You may use a [Stateless Component](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) here if you prefer.
 
-You will need to fill in the [action/Items](./src/action/Items) file along with modify the [reducers/Items](./src/reducers/Items) file.
+You will need to fill in the [action/Items.js](./src/actions/Items.js) file along with modify the [reducers/Items.js](./src/reducers/Items.js) file.
 
 Feel free to add some style/flair in the [src/App.css](./src/App.css) file!
 
