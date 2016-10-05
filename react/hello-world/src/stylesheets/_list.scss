@@ -1,0 +1,31 @@
+ul{
+  display: block;
+  list-style: none;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0;
+  width: 90%;
+  margin: 30px auto 0;
+  li{
+    border-bottom: 1px solid;
+    margin-bottom: 5px;
+    padding: 10px;
+  }
+
+  li:hover{
+    animation-duration: 0.5s;
+    animation-name: focus;
+  }
+}
+
+@keyframes focus {
+  40% {
+      font-size: 102%;
+    }
+
+  100% {
+    font-size: 100%;
+  }
+}

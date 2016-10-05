@@ -1,0 +1,2 @@
+export const STREAM_CURRENT_ITEM = 'STREAM_CURRENT_ITEM';
+export const ADD_ITEM_TO_LIST = 'ADD_ITEM_TO_LIST';

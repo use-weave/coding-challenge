@@ -1,12 +1,12 @@
 import * as types from '../constants/ActionTypes';
 
-function Items(state = [], action) {
+export default function Form(state = "", action) {
     switch (action.type) {
+        case types.STREAM_CURRENT_ITEM:
+          return action.item;
         case types.ADD_ITEM_TO_LIST:
-          return [...state, action.item];
+          return "";
         default:
             return state
     }
-}
-
-export default Items
+};

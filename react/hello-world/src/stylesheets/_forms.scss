@@ -1,0 +1,24 @@
+.form{
+  @extend .pure-form;
+}
+
+.pure-form label {
+    text-transform: capitalize;
+}
+
+.pure-form input[type="text"]{
+    box-shadow: none;
+    -webkit-appearance: none;
+    width: 100%;
+}
+
+.pure-form input[type]:focus{
+  border-color : $input-border-focus;
+}
+
+.button{
+  @extend .pure-button;
+  color : $primary-text-db;
+  background-color: $primary;
+  text-transform: capitalize;
+}
