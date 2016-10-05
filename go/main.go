@@ -3,6 +3,12 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"encoding/json"
+	
+	
+
+
+	
 )
 
 // Payload is a definition of what will be posted to the API endpoint.
@@ -23,6 +29,31 @@ func handlePost() http.Handler {
 		// on how to update this function to make the test pass.
 		//
 		// Feel free to use the test for some ideas.
+
+		//take r and "decode it " grab information and put it into a map ( refer to test code)
+		// then send it back over in json just like code in test protram 
+
+
+	decoder := json.NewDecoder(r.Body) //create new decoder
+    var t Payload //struct  to store the data 
+    err := decoder.Decode(&t) //put decode data into struct
+    if err != nil { //protect against bad json 
+        fmt.Fprintf(w, "shit")
+    }
+    fmt.Println("Hey", t)
+
+    // populate result with data containted in t, map must read one: test1   two:test2 etc
+    //cant figure out how to put data from body into map 
+    //resend data using responsewriter 
+
+    //json.marshall(result?) encode map into json so it can be sent with responsewriter
+    //json.NewEncoder(w).Encode(t)
+
+
+
+	
+    
+
 		fmt.Fprintf(w, "Hello world!")
 	})
 }
