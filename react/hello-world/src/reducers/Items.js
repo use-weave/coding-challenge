@@ -6,6 +6,15 @@ import * as ItemActions from 'actions/Items'
 function Items(state = [], action) {
 
     switch (action.type) {
+//reducer to append new item to list
+	     case ItemActions.ADD_TODO:
+	      return [
+	        ...state,
+	        {
+	          text: action.text,
+	          completed: false
+	        }
+	      ]
 
         default:
             return state
@@ -13,3 +22,6 @@ function Items(state = [], action) {
 }
 
 export default Items
+
+
+//take previous state and action and return new state. ie a list with a new thing in it 
