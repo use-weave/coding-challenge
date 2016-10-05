@@ -19,21 +19,78 @@ import Form from 'components/Form'
 @connect()
 class App extends Component {
 
+    state = {
+        items: [],
+    }
+
     // All components need a render method, and this is the top level of our application's render.
     // When properties or state changes for this function, this function gets called.
     // It is super important to avoid re-rendering your app if it is not needed (especially if it
     // is in the top level of your app -- imagine your entire app re-rendering if one small variable
     // changes). The trick is to create smaller components to handle changing data like that.
     // That would give you bonus points for this challenge.
+   
+  /* render() {
+        return{
+            givetInitialState: function() {
+                return {
+                    items: []
+                };
+            }
+        }
+    }
+
+    
+    render () {
+        return {
+            addItem: function(e) {
+
+
+                var itemArray = this.state.items;
+                   
+                  itemArray.push(
+                    {
+                      text: this._inputElement.value,
+                      key: Date.now()
+                    }
+                  );
+                 
+                  this.setState({
+                    items: itemArray
+                  });
+                 
+                  this._inputElement.value = "";
+                 
+                  e.preventDefault();
+     
+            }
+        }
+    }
+*/
+
     render() {
         return (
             <div className="container">
-                <h1>What's up from Weave</h1>
+                <h1>Whats up from Weave</h1>
 
-                {/*your code goes here... also this is an example of a comment in JSX*/}
+                { //creating the button, text bar, etc. also attemtpting to add item to array once submitted
+                   
+                    <div className="todoListMain">
+                      <div className="header">
+                        <form onSubmit={this.addItem}>
+                          <input ref={(a) => this._inputElement = a} placeholder="enter task">
+                          </input>
+                          <button type="submit">add</button>
+                        </form>
+                      </div>
+                      
+                    </div>
+                }
             </div>
         )
     }
+
+
 }
 
 export default App
