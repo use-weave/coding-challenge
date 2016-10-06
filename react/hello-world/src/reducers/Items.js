@@ -1,12 +1,9 @@
-// We load in ItemActions here to be able to reference the constants you hopefully set up.
-import * as ItemActions from 'actions/Items'
+import * as types from '../constants/ActionTypes';
 
-// Every reducer needs to have something return, whether or not a case matches.
-// A reducer should never return null or undefined.
 function Items(state = [], action) {
-
     switch (action.type) {
-
+        case types.ADD_ITEM_TO_LIST:
+          return [...state, action.item];
         default:
             return state
     }
