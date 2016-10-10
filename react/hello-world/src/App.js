@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './App.css'
 
+
 import * as ItemActions from 'actions/Items'
 
 // NOTE: components declared in the "components" directory, should not be attached
@@ -29,6 +30,7 @@ class App extends Component {
         return (
             <div className="container">
                 <h1>What's up from Weave</h1>
+                <Form/>
 
                 {/*your code goes here... also this is an example of a comment in JSX*/}
             </div>
