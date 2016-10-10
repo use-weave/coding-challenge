@@ -1,0 +1,17 @@
+I downloaded and installed the languages Go and React.
+
+First I tried the tutorial here: http://redux.js.org/docs/basics/ExampleTodoList.html and found that my React was messed up. Once I figured out what was messed up with it (deprecated dependencies) I then continued in the App. I know how to use HTML and Javascript so I added my HTML into the Form component. For some reason, the form will now show up in the App.js, even when I call the <Form/> in the App.js.
+- I am getting: (Maybe this is why the <Form/> isn't showing up?)
+  5:13  warning  'ItemActions' is defined but never used  no-unused-vars
+  11:8   warning  'Item' is defined but never used         no-unused-vars
+  14:8   warning  'Form' is defined but never used         no-unused-vars
+
+I then started going over some of the Redux stuff at redux.js.org and understand how the file structure works. I think I am just missing some syntax to get the <Form/> to show up.
+
+I'm still having issues with running the server (I think something is wrong with my environment config), but I started writing the JSX in the components. Because I can't run the server, I'm not sure if it is right. I'm having a ton of fun with this though in learning how to use React and the virtual DOM.
+
+
+--------------------------------- GO --------------------------------------
+Go is tougher. I don't have any references to go back to (like React has JS) so it is much tougher. I don't have much time to work on this because I am on call. With some time and guidance, I should be able to pick it up.
+
+I tried the Go tour and began looking at documentation to understand the language. The language is pretty complex, from what I can make of it. If I had more time to look at this, I'd feel better in Go. It calls a lot of words that have to be reserved like res, val etc. I couldn't get much done on the Go front because I was working on the React stuff and I have very limited time.
