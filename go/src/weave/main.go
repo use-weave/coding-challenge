@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"math"
+	// "math"
 	"net/http"
 )
 
@@ -36,15 +36,12 @@ func handlePost() http.Handler {
 		// fmt.Println("values are: ", t.Values)
 
 		res := make(Result)
-		nk := len(p.Keys)
-		nv := len(p.Values)
-		n := int(math.Max(float64(nk), float64(nv)))
+		// nk := len(p.Keys)
+		// nv := len(p.Values)
+		// n := int(math.Min(float64(nk), float64(nv)))
+		n := len(p.Values)
 		for i := 0; i < n; i++ {
-			if i < nv {
-				res[p.Keys[i]] = p.Values[i]
-			} else {
-				res[p.Keys[i]] = ""
-			}
+			res[p.Keys[i]] = p.Values[i]
 		}
 		fmt.Println(res)
 		jsonString, err := json.Marshal(res)
