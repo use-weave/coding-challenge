@@ -18,39 +18,30 @@ type Result map[string]string
 
 // handlePost is the handler that will where most of your code will be written
 func handlePost() http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
 		// Right now we are simply taking the writer defined as an argument to this function
 		// and using that to write the text "Hello world!". Using the README, follow the instructions
 		// on how to update this function to make the test pass.
 		//
 		// Feel free to use the test for some ideas.
-		decoder := json.NewDecoder(req.Body)
+		decoder := json.NewDecoder(r.Body)
 		var p Payload
 		err := decoder.Decode(&p)
 		if err != nil {
-			panic("ahhh!")
+			panic(err)
 		}
-		defer req.Body.Close()
-		// fmt.Println("keys are: ", t.Keys)
-		// fmt.Println("values are: ", t.Values)
-
+		defer r.Body.Close()
 		res := make(Result)
-		// nk := len(p.Keys)
-		// nv := len(p.Values)
-		// n := int(math.Min(float64(nk), float64(nv)))
 		n := len(p.Values)
 		for i := 0; i < n; i++ {
 			res[p.Keys[i]] = p.Values[i]
 		}
-		fmt.Println(res)
 		jsonString, err := json.Marshal(res)
 		if err != nil {
-			fmt.Println(err)
-			return
+			panic(err)
 		}
-		fmt.Println(string(jsonString))
-
+		w.WriteHeader(202)
 		fmt.Fprintf(w, "%s", string(jsonString))
 	})
 }
