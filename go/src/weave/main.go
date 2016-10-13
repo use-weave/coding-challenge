@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"math"
 	"net/http"
 )
 
@@ -25,16 +26,35 @@ func handlePost() http.Handler {
 		//
 		// Feel free to use the test for some ideas.
 		decoder := json.NewDecoder(req.Body)
-		var t Payload
-		err := decoder.Decode(&t)
+		var p Payload
+		err := decoder.Decode(&p)
 		if err != nil {
 			panic("ahhh!")
 		}
 		defer req.Body.Close()
-		fmt.Println("keys are: ", t.Keys)
-		fmt.Println("values are: ", t.Values)
+		// fmt.Println("keys are: ", t.Keys)
+		// fmt.Println("values are: ", t.Values)
 
-		fmt.Fprintf(w, "Hello world!!!!")
+		res := make(Result)
+		nk := len(p.Keys)
+		nv := len(p.Values)
+		n := int(math.Max(float64(nk), float64(nv)))
+		for i := 0; i < n; i++ {
+			if i < nv {
+				res[p.Keys[i]] = p.Values[i]
+			} else {
+				res[p.Keys[i]] = ""
+			}
+		}
+		fmt.Println(res)
+		jsonString, err := json.Marshal(res)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Println(string(jsonString))
+
+		fmt.Fprintf(w, "%s", string(jsonString))
 	})
 }
 
