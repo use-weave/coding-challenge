@@ -2,8 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
-	// "math"
 	"net/http"
 )
 
@@ -19,30 +17,23 @@ type Result map[string]string
 // handlePost is the handler that will where most of your code will be written
 func handlePost() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
-		// Right now we are simply taking the writer defined as an argument to this function
-		// and using that to write the text "Hello world!". Using the README, follow the instructions
-		// on how to update this function to make the test pass.
-		//
-		// Feel free to use the test for some ideas.
-		decoder := json.NewDecoder(r.Body)
 		var p Payload
-		err := decoder.Decode(&p)
+		err := json.NewDecoder(r.Body).Decode(&p) // parse JSON in request body
 		if err != nil {
 			panic(err)
 		}
 		defer r.Body.Close()
+
 		res := make(Result)
-		n := len(p.Values)
-		for i := 0; i < n; i++ {
+		for i := 0; i < len(p.Values); i++ { // combine keys and values from payload into map
 			res[p.Keys[i]] = p.Values[i]
 		}
-		jsonString, err := json.Marshal(res)
+		jsonString, err := json.Marshal(res) // encode Result map into JSON
 		if err != nil {
 			panic(err)
 		}
-		w.WriteHeader(202)
-		fmt.Fprintf(w, "%s", string(jsonString))
+		w.WriteHeader(http.StatusAccepted)
+		w.Write(jsonString) // write JSON byte string response to the connection
 	})
 }
 
