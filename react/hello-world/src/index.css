@@ -4,19 +4,3 @@ body {
   font-family: sans-serif;
 }
 
-.app {
-    width: 80%;
-    margin: 0 auto;
-}
-
-ul {
-    list-style: none;
-}
-
-ul li {
-    padding: 5px;
-}
-
-.input {
-    width: 100%;
-}

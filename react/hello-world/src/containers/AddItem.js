@@ -7,7 +7,7 @@ let AddItem = ({ dispatch }) => {
 
   return (
     <div>
-      <form className="form" onSubmit={e => {
+      <form autoComplete="off" onSubmit={e => {
         e.preventDefault()
         if (!input.value.trim()) {
           return
@@ -15,9 +15,12 @@ let AddItem = ({ dispatch }) => {
         dispatch(addItem(input.value))
           input.value = ''
       }}>
-      <input className="input" ref={node => {
+      <label htmlFor="input-item" ></label>
+
+      <input id="input-item" type="text" ref={node => {
           input = node
-        }} type="text" />
+          input.autofocus = true
+      }} />
       </form>
     </div>
   )

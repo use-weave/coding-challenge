@@ -1,1 +1,39 @@
 /* add some style for extra points! */
+
+.app {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+}
+
+ul li {
+    padding: 5px;
+}
+
+ul li:first-child {
+    margin-top: 20px;
+    padding-top: 0;
+}
+
+input[type=text] {
+    font-size: inherit;
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input[type=text]:focus {
+    border: 1px solid skyblue;
+}
+
