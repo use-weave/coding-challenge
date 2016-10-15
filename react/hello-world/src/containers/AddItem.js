@@ -7,17 +7,17 @@ let AddItem = ({ dispatch }) => {
 
   return (
     <div>
-      <form onSubmit={e => {
+      <form className="form" onSubmit={e => {
         e.preventDefault()
         if (!input.value.trim()) {
           return
         }
         dispatch(addItem(input.value))
-        input.value = ''
+          input.value = ''
       }}>
-        <input ref={node => {
+      <input className="input" ref={node => {
           input = node
-        }} />
+        }} type="text" />
       </form>
     </div>
   )

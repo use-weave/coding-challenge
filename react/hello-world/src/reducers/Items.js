@@ -4,16 +4,6 @@ const item = (state, action) => {
       return {
         id: action.id,
         text: action.text,
-        completed: false
-      }
-    case 'TOGGLE_ITEM':
-      if (state.id !== action.id) {
-        return state
-      }
-
-      return {
-        ...state,
-        completed: !state.completed
       }
     default:
       return state
@@ -27,10 +17,6 @@ const items = (state = [], action) => {
         ...state,
         item(undefined, action)
       ]
-    case 'TOGGLE_ITEM':
-      return state.map(t =>
-        item(t, action)
-      )
     default:
       return state
   }

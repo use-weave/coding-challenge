@@ -5,7 +5,7 @@ import ItemList from '../containers/ItemList'
 import '../App.css'
 
 const App = () => (
-  <div id="app">
+  <div className="app">
     <AddItem />
     <ItemList />
   </div>
