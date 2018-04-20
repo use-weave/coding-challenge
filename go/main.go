@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"io/ioutil"
+	"encoding/json"
 )
 
 // Payload is a definition of what will be posted to the API endpoint.
@@ -17,13 +19,27 @@ type Result map[string]string
 // handlePost is the handler that will where most of your code will be written
 func handlePost() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
-		// Right now we are simply taking the writer defined as an argument to this function
-		// and using that to write the text "Hello world!". Using the README, follow the instructions
-		// on how to update this function to make the test pass.
-		//
-		// Feel free to use the test for some ideas.
-		fmt.Fprintf(w, "Hello world!")
+    body, err := ioutil.ReadAll(r.Body)
+    if err != nil {
+      panic(err)
+    }
+    
+		var p Payload
+		err = json.Unmarshal(body, &p)
+    if err != nil {
+        panic(err)
+    }
+    var out = make(Result)
+    // looping over range of values ensures we don't include missing values
+    for i, val := range p.Values {
+      out[p.Keys[i]] = val
+    }
+    j, err := json.Marshal(&out)
+    if err != nil {
+        panic(err)
+    }
+    w.WriteHeader(http.StatusAccepted)
+		fmt.Fprintf(w, string(j))
 	})
 }
 
