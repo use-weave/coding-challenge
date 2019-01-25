@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"encoding/json"
 	"net/http"
 )
 
@@ -17,13 +17,40 @@ type Result map[string]string
 // handlePost is the handler that will where most of your code will be written
 func handlePost() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		decoder := json.NewDecoder(r.Body)
+		res := make(map[string]string)
+		var pay Payload
 
+		err := decoder.Decode(&pay)
+		if err != nil {
+			panic(err)
+		}
+
+		key_arr := pay.Keys
+		val_arr := pay.Values
+		for i, v := range val_arr {
+			for x, y := range key_arr {
+
+				if x == i {
+					res[y] = v
+				}
+			}
+
+		}
+
+		resJson, err := json.Marshal(res)
+		if err != nil {
+			panic(err)
+		}
+
+		w.WriteHeader(http.StatusAccepted)
+		w.Write(resJson)
 		// Right now we are simply taking the writer defined as an argument to this function
 		// and using that to write the text "Hello world!". Using the README, follow the instructions
 		// on how to update this function to make the test pass.
 		//
 		// Feel free to use the test for some ideas.
-		fmt.Fprintf(w, "Hello world!")
+		//fmt.Fprintf(w, "Hello world!")
 	})
 }
 
