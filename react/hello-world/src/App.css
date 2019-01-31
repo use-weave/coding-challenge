@@ -1,1 +1,52 @@
 /* add some style for extra points! */
+.App {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    
+
+}
+.header {
+    text-transform: uppercase;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+
+}
+.input {
+    margin: auto;
+    width: 25%;
+    padding: 10px;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+.button {
+    background-color: antiquewhite;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    width: 13%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .button:hover {
+      background-color: antiquewhite;
+  }
+  
+
+  .button:active {
+      background-color: antiquewhite;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+  }
