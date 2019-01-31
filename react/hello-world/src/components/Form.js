@@ -1,32 +1,53 @@
 import React, { Component } from 'react'
-export default class Form extends Component {
-        constructor(props) {
-          super(props);
-          this.state = {value: ''};
-      
-          this.handleChange = this.handleChange.bind(this);
-          this.handleSubmit = this.handleSubmit.bind(this);
-        }
-      
-        handleChange(event) {
-          this.setState({value: event.target.value});
-        }
-      
-        handleSubmit(event) {
-          alert('A Item was submitted: ' + this.state.value);
-          event.preventDefault();
-        }
-      
-        render() {
-          return (
-            <form onSubmit={this.handleSubmit}>
-              <label>
-                Item:
-                <input type="text" value={this.state.value} onChange={this.handleChange} />
-              </label>
-              <input type="submit" value="Submit" />
-            </form>
-          );
-        }
+import { addItem } from '../actions/Items'
+/*import { connect } from 'react-redux' */
+
+class Form extends Component {
+  constructor() {
+    super();
+    this.state = {
+      item: ""
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({item: event.target.value})
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    const item = {
+      item: this.state.item,
+      id: Math.random()
+    }
+    let action = addItem(item)
+    this.props.dispatch(action)
+    this.setState({item: ""})
+    document.getElementById("item").value=""
+  }
+
+  render() {
+    return (
+      <form className="body" onSubmit={this.handleSubmit}>
+      <label className="input">
+        Input Item 
+        <br/>
+        <input className="input"type="text" id="item" onChange={this.handleChange} />
+      </label>
+      <br/>
+      <button type="submit"value="Submit"className="button">Enter</button>
+      </form>
+    )
+  }
 }
 
+export default Form
+/* const mapDispatchToProps = dispatch => {
+  return {
+    onEnterItem: item => {
+      dispatch(addItem(item))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Form); */

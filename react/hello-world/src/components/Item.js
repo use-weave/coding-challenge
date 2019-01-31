@@ -1,7 +1,22 @@
-import React, { Component } from 'react'
-import Items from '../reducers/Items'
-    const reactElementsArray = Items.map((Items) => {
+import React from 'react'
+
+export default class Item extends React.Component {
+
+    list() {
+        return this.props.items.map(data => {
+            return(
+                <article key={data.id}>
+                  <p>{data.item}</p>
+                </article>
+              )
+        })
+    }
+
+    render() {
         return (
-            <p>{Items}</p>
-        );
-    });
+            <section className="App">
+                {this.list()}
+            </section>
+        )
+    }
+}
