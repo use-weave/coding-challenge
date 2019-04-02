@@ -9,7 +9,7 @@ import App from './App'
 import './index.css'
 
 const store = createStore(
-    combineReducers({...reducers})
+    combineReducers({...reducers}),
 )
 
 ReactDOM.render((
@@ -18,3 +18,5 @@ ReactDOM.render((
         </Provider>
     ), document.getElementById('root')
 )
+
+export default store

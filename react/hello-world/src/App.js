@@ -16,9 +16,19 @@ import Form from 'components/Form'
 // Provides a basic connection to redux. If you want to read from the state of
 // the store, you will need to pass in an argument to this function. Examples should
 // be online for this.
-@connect()
-class App extends Component {
 
+function mapStateToProps(state) {
+  return {...state};
+}
+
+
+const handleSubmit = (event) => {
+}
+
+@connect(mapStateToProps)
+
+class App extends Component {
+  
     // All components need a render method, and this is the top level of our application's render.
     // When properties or state changes for this function, this function gets called.
     // It is super important to avoid re-rendering your app if it is not needed (especially if it
@@ -28,9 +38,12 @@ class App extends Component {
     render() {
         return (
             <div className="container">
-                <h1>What's up from Weave</h1>
-
-                {/*your code goes here... also this is an example of a comment in JSX*/}
+              <div className="col-6">
+                <Form handleSubmit={this.handleSubmit}/>
+              </div>
+              <div className="col-6">
+                <Item />
+              </div>
             </div>
         )
     }
