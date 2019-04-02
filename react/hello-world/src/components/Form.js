@@ -1,16 +1,22 @@
 import React from 'react'
 
-const Form = ({handleSubmit}) => {
+function Form (props) {
+  let { Submit } = props
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    Submit(event.target.newItem.value)
+  }
+
   return(
-    <React.Fragment>
-      <form onSubmit={e=>handleSubmit(e)}>
-        <label>
+      <form onSubmit={(e)=>{handleSubmit(e)}}>
+        <label htmlFor="newItem">
           Put words here!
-          <input type='text'/>
         </label>
-        <input type="submit" value="Do Words"/>
+        <input type="text" id="newItem"/>
+        {/* <input type="submit" value="Do Words" /> */}
+        <button>Do Words</button>
       </form>
-    </React.Fragment>
   )
 }
 
