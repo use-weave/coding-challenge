@@ -14,7 +14,6 @@ function Form (props) {
           Put words here!
         </label>
         <input type="text" id="newItem"/>
-        {/* <input type="submit" value="Do Words" /> */}
         <button>Do Words</button>
       </form>
   )

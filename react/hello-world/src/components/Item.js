@@ -1,10 +1,15 @@
 import React from 'react'
 
-const Item = () => {
-  // this should display the text of each item, passed down from state
+const Item = ({ Items }) => {
+  // displays the text of each item
   
   return(
-      <div className="row">Hallo Woild!</div>
+
+      <div className="Items">
+        {Items.length > 0 && Items.map((item, id) => 
+        <div key={id}>{item}</div>
+        )}
+      </div>
   )
 }
 

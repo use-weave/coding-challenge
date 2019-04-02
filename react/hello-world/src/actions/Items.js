@@ -6,23 +6,12 @@
 // one action to get state and send it to the ItemsList component
 // actions get called by the app and dispatch to the reducer
 
-export const ADD_ITEM = 'ADD_ITEM' 
-export const GET_ITEMS = 'GET_ITEMS'
+export const ADD_ITEM = 'ADD_ITEM'
 
 export const addItem = (item) => {
   console.log('in actions')
-  return (dispatch) => {
-    dispatch({
-      type: ADD_ITEM,
-      payload: item
-    })
-  }
-}
-
-export const getItems = () => {
-  return (dispatch) => {
-    dispatch({
-      type: GET_ITEMS
-    })
+  return {
+    type: ADD_ITEM,
+    payload: item
   }
 }
