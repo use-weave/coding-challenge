@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import './App.css'
 
 import * as ItemActions from 'actions/Items'
-
+{ }
 // NOTE: components declared in the "components" directory, should not be attached
 // or connected to redux. Use props to pass data into them.
 
 // Item should be an extremely simple component that represents one item in our list
-import Item from 'components/Item'
+import ItemsList from 'components/Item'
 
 // Form will be more complicated, because it has to communicate with the top level app via properties.
 import Form from 'components/Form'
@@ -23,6 +23,9 @@ function mapStateToProps(state) {
 
 
 const handleSubmit = (event) => {
+  // dispatch an action
+  // even.target.value gets passed into the action that gets dispatched to the reducer
+  // 
 }
 
 @connect(mapStateToProps)
@@ -42,7 +45,7 @@ class App extends Component {
                 <Form handleSubmit={this.handleSubmit}/>
               </div>
               <div className="col-6">
-                <Item />
+                <ItemsList />
               </div>
             </div>
         )
