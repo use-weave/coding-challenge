@@ -21,16 +21,8 @@ class App extends Component {
   
   render() {
 
-    const displayStyles = {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh'
-    }
-
     return (
-      <div className="container" style={displayStyles}> 
+      <div className="container"> 
         <div>
           <Form Submit={this.Submit}/>
         </div>
