@@ -20,7 +20,7 @@ npm start
 
 ## Objective
 
-First you will need to create a page to show available drivers and orders placed in the system in a clean and elegant way. The data has been stubbed out in Redux. Then you will need a way to assign orders to drivers who are available using Redux actions.
+You will be building a driver assignment page for a cannabis delivery dashboard. This dashboard will be viewed by dispensary managers and allow them to see their drivers and assign orders from a list of pending orders. First you will need to create a page to show available drivers and orders placed in a clean and elegant way. Make sure to show off all of the driver and order information in a clean hierarchy. The driver and order data has been stubbed out in Redux. Finally, you will need a way to assign an order to an available driver using Redux actions.
 
 The things we are looking for:
 - Clean and elegant design
