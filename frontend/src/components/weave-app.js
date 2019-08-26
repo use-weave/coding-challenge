@@ -11,8 +11,6 @@ import {
     navigate,
 } from '../actions/app.js';
 
-
-
 window.customElements.define('weave-app', class extends connect(store)(LitElement) {
 
     static get properties() {
@@ -37,7 +35,6 @@ window.customElements.define('weave-app', class extends connect(store)(LitElemen
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                
                 }
 
                 h1 {
