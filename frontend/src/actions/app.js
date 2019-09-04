@@ -14,9 +14,9 @@ const loadPage = (page) => async (dispatch) => {
     case 'home':
       await import('../components/weave-driver-assignments.js');
       break;
-    case 'about':
-      import('../components/weave-about.js');
-      break;
+    // case 'about':
+    //   import('../components/weave-about.js');
+    //   break;
     
     default:
       page = 'view404';
