@@ -50,7 +50,7 @@ window.customElements.define('weave-driver-assignments', class extends connect(s
             </section>
 
             <section>
-                <h2>Drivers</h2>
+                <h2>Drivers!</h2>
 
                 ${this._drivers.map(driver => html`
                     <weave-driver

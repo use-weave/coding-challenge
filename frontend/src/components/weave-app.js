@@ -59,7 +59,7 @@ window.customElements.define('weave-app', class extends connect(store)(LitElemen
         return html`
 
             <header>
-                <h1>Weave</h1>
+                <h1>Weave!</h1>
             </header>
 
             <main>
