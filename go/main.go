@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 )
@@ -11,19 +12,35 @@ type Payload struct {
 	Values []string `json:"values"`
 }
 
-// Result is a response type that we expect in return.
+// Result is a response type the tests expect in return.
 type Result map[string]string
 
-// handlePost is the handler that will where most of your code will be written
+// handlePost is a handler and is where you will write most of your code
 func handlePost() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		
+		var payload Payload // Use Payload from above as data structure
+		err := json.NewDecoder(r.Body).Decode(&payload) // Decode request body to &payload pointer
 
-		// Right now we are simply taking the writer defined as an argument to this function
-		// and using that to write the text "Hello world!". Using the README, follow the instructions
-		// on how to update this function to make the test pass.
-		//
-		// Feel free to use the test for some ideas.
-		fmt.Fprintf(w, "Hello world!")
+		// Handle error if unable to parse Request Body
+		if err != nil {
+      fmt.Printf("Error reading body: %v", err)
+      http.Error(w, "Unable to read request body!", http.StatusBadRequest)
+      return
+    }
+
+    result := make(Result) // create empty map using Result type from above
+
+    // Populate result, breaking loop when either of the arrays is consumed
+		for i := 0; i < len(payload.Keys) && i < len(payload.Values); i++ {
+			result[payload.Keys[i]] = payload.Values[i]
+		}
+
+		// Set response header status code
+		w.WriteHeader(202)
+
+		// encode our new map into JSON, and write it to the ResponseWriter
+		json.NewEncoder(w).Encode(result)
 	})
 }
 
