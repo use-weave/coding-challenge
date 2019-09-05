@@ -1,9 +1,5 @@
 import { css } from 'lit-element';
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
 export const ResetStyles = css`
 	html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -52,14 +48,13 @@ export const ResetStyles = css`
 
 export const SharedStyles = css`
 
-    * { box-sizing: border-box; }
+  * { box-sizing: border-box; }
 
-    :host {
-        display: block;
-    }
+  :host {
+    display: block;
+  }
 
-    h1, h2, h3 {
-        font-family: 'Montserrat', sans-serif;
-    }
-
+  h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+  }
 `;
