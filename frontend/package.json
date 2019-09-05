@@ -13,7 +13,8 @@
     "lit-element": "^2.2.1",
     "pwa-helpers": "^0.9.1",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "webpack": "^4.39.3",
