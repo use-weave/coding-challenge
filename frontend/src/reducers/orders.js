@@ -10,6 +10,34 @@ const INITIAL_STATE = [
         address_city: 'Boulder',
         address_state: 'CO',
         address_zip: '80303',
+        // created, filled, queued, out for delivery, delivered, cancelled
+        statusList: [
+            {
+                actor: 'Danny DeVito',
+                status: 'Created',
+                time: new Date().toISOString(),
+            },
+            {
+                actor: 'Barney',
+                status: 'Filled',
+                time: new Date().toISOString(),
+            },
+            {
+                actor: 'Bekkie',
+                status: 'Queued',
+                time: new Date().toISOString(),
+            },
+            {
+                actor: 'Billy',
+                status: 'Out For Delivery',
+                time: new Date().toISOString(),
+            },
+            {
+                actor: null,
+                status: 'Delivered',
+                time: new Date().toISOString(),
+            },
+        ],
     },
     {
         id: '1238124751',
@@ -21,6 +49,13 @@ const INITIAL_STATE = [
         address_city: 'Aurora',
         address_state: 'CO',
         address_zip: '90210',
+        statusList: [
+            {
+                actor: 'Bob Saget',
+                status: 'Created',
+                time: new Date().toISOString(),
+            },
+        ],
     },
     {
         id: '1238124756',
@@ -32,6 +67,13 @@ const INITIAL_STATE = [
         address_city: 'Ft Collins',
         address_state: 'CO',
         address_zip: '81091',
+        statusList: [
+            {
+                actor: 'Tony Hawk',
+                status: 'Created',
+                time: new Date().toISOString(),
+            },
+        ],
     },
     {
         id: '1238124757',
@@ -43,6 +85,13 @@ const INITIAL_STATE = [
         address_city: 'Greeley',
         address_state: 'CO',
         address_zip: '81920',
+        statusList: [
+            {
+                actor: 'T Pain',
+                status: 'Created',
+                time: new Date().toISOString(),
+            },
+        ],
     }
 ];
 
