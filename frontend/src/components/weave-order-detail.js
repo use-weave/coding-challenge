@@ -13,7 +13,7 @@ window.customElements.define('weave-order-detail', class extends LitElement {
 			created: String,
 			customer: String,
 			items: Number,
-			orderId: String,
+			order_id: String,
 			statusList: Array,
 			total: Number,
 		}
@@ -42,17 +42,15 @@ window.customElements.define('weave-order-detail', class extends LitElement {
 					grid-column: 1 / -1;
 					margin: 1rem 0 0.5rem;
 				}
-			}
 			`
 		];
 	};
 
 	render() {
-		console.log('statusList', this.statusList);
 		return html`
 			<div class="order-detail">
 				<p>Order ID</p>
-				<p>${this.orderId}</p>
+				<p>${this.order_id}</p>
 
 				<p>Address</p>
 				<p>

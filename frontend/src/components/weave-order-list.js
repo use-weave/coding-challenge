@@ -5,6 +5,8 @@ import { ResetStyles, SharedStyles } from './shared-styles.js';
 import { store } from '../store.js';
 import { connect } from 'pwa-helpers/connect-mixin.js';
 
+import { selectOrder, unselectOrder } from '../actions/assignments.js';
+
 // Lazy Loading Reducers
 import assignments from '../reducers/assignments.js';
 import orders from '../reducers/orders.js';
@@ -19,7 +21,7 @@ import './weave-order-detail.js';
 window.customElements.define('weave-order-list', class extends connect(store)(LitElement) {
 	static get properties() {
 		return {
-			_orders: Array,
+			_orders: Object,
 			_assignments: Object,
 		}
 	}
@@ -41,29 +43,30 @@ window.customElements.define('weave-order-list', class extends connect(store)(Li
 	}
 
 	render() {
-		console.log('example', this._orders[0].statusList);
 		return html`
 			<section>
         <h2>Orders</h2>
 
-        ${this._orders.map(order => html`
+        ${Object.values(this._orders).map(order => html`
             <weave-order-list-item
-            	created=${order.created}
-            	customer=${order.customer}
-            	orderId=${order.id}
-            	status=${order.statusList[order.statusList.length - 1].status}
+            	@order-selected="${this._orderSelected}"
+            	@order-unselected="${this._orderUnselected}"
+            	created="${order.created}"
+            	customer="${order.customer}"
+            	order_id="${order.id}"
+            	status="${order.statusList[order.statusList.length - 1].status}"
           	></weave-order-list-item>
           	<weave-order-detail
-          		address_street=${order.address_street}
-							address_city=${order.address_city}
-							address_state=${order.address_state}
-							address_zip=${order.address_zip}
-							created=${order.created}
-							customer=${order.customer}
-							items=${order.items}
-							orderId=${order.id}
-							.statusList=${order.statusList}
-							total=${order.total}
+          		address_street="${order.address_street}"
+							address_city="${order.address_city}"
+							address_state="${order.address_state}"
+							address_zip="${order.address_zip}"
+							created="${order.created}"
+							customer="${order.customer}"
+							items="${order.items}"
+							order_id="${order.id}"
+							.statusList="${order.statusList}"
+							total="${order.total}"
           	></weave-order-detail>
         `)}
 
@@ -71,6 +74,13 @@ window.customElements.define('weave-order-list', class extends connect(store)(Li
 		`
 	}
 	
+	_orderSelected(e) {
+		store.dispatch(selectOrder(e.detail.order_id));
+	}
+
+	_orderUnselected(e) {
+		store.dispatch(unselectOrder(e.detail.order_id));
+	}
 
 	stateChanged(state) {
 		this._orders = state.orders;
