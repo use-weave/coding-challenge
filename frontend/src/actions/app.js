@@ -12,7 +12,7 @@ export const navigate = (path) => (dispatch) => {
 const loadPage = (page) => async (dispatch) => {
   switch(page) {
     case 'home':
-      await import('../components/weave-driver-assignments.js');
+      await import('../components/weave-assign-orders.js');
       break;
     // case 'about':
     //   import('../components/weave-about.js');
