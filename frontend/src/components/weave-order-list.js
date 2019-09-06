@@ -32,11 +32,13 @@ window.customElements.define('weave-order-list', class extends connect(store)(Li
 			SharedStyles,
 			css`
 				:host {
+					grid-area: order-list;
+					padding-top: 0.5rem;
         }
 
         h2 {
         	font-size: 1.5rem;
-        	padding: 0.25rem 1rem;
+        	padding: 0rem 1rem;
         }
 			`
 		]
@@ -47,29 +49,30 @@ window.customElements.define('weave-order-list', class extends connect(store)(Li
 			<section>
         <h2>Orders</h2>
 
-        ${Object.values(this._orders).map(order => html`
-            <weave-order-list-item
-            	@order-selected="${this._orderSelected}"
-            	@order-unselected="${this._orderUnselected}"
-            	created="${order.created}"
-            	customer="${order.customer}"
-            	order_id="${order.id}"
-            	status="${order.statusList[order.statusList.length - 1].status}"
-          	></weave-order-list-item>
-          	<weave-order-detail
-          		address_street="${order.address_street}"
-							address_city="${order.address_city}"
-							address_state="${order.address_state}"
-							address_zip="${order.address_zip}"
-							created="${order.created}"
-							customer="${order.customer}"
-							items="${order.items}"
-							order_id="${order.id}"
-							.statusList="${order.statusList}"
-							total="${order.total}"
-          	></weave-order-detail>
-        `)}
-
+      	<div class="list-wrapper">
+	        ${Object.values(this._orders).map(order => html`
+	            <weave-order-list-item
+	            	@order-selected="${this._orderSelected}"
+	            	@order-unselected="${this._orderUnselected}"
+	            	created="${order.created}"
+	            	customer="${order.customer}"
+	            	order_id="${order.id}"
+	            	status="${order.statusList[order.statusList.length - 1].status}"
+	          	></weave-order-list-item>
+	          	<weave-order-detail
+	          		address_street="${order.address_street}"
+								address_city="${order.address_city}"
+								address_state="${order.address_state}"
+								address_zip="${order.address_zip}"
+								created="${order.created}"
+								customer="${order.customer}"
+								items="${order.items}"
+								order_id="${order.id}"
+								.statusList="${order.statusList}"
+								total="${order.total}"
+	          	></weave-order-detail>
+	        `)}
+        </div>
     	</section>
 		`
 	}

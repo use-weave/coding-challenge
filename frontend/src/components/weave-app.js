@@ -45,14 +45,42 @@ window.customElements.define('weave-app', class extends connect(store)(LitElemen
                     --box-shadow-hover: rgba(0, 0, 0, 0.20) 0px 3px 10px, rgba(0, 0, 0, 0.28) 0px 3px 10px;
                 }
 
-                header {
-                    background-color: white;
-                    color: white;
-                    height: 56px;
-                    padding: 0 16px;
-                    display: flex;
+                /* Wide layout: when the viewport width is bigger than 460px, layout
+                changes to a wide layout */
+                @media (min-width: 460px) {
+                  :host {
+                    display: grid;
+                    grid-template-areas:  "head"
+                                          "main"
+                                          "foot";
+                    grid-template-rows: 3rem 1fr 2rem;
+                    height: 100%;
+                    max-height: 100vh;
+                    width: 100%;
+                  }
+                }
+
+                footer {
                     align-items: center;
+                    background-color: rgba(0,0,0,0.2);
+                    color: rgba(0,0,0,0.6);
+                    display: flex;
+                    grid-area: foot;
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                header {
+                    align-items: center;
+                    background-color: white;
+                    box-shadow: var(--box-shadow);
+                    color: white;
+                    display: flex;
+                    grid-area: head;
+                    /* height: 56px; */
                     justify-content: space-between;
+                    padding: 0 16px;
+                    z-index: 1;
                 }
 
                 h1 {
@@ -60,6 +88,10 @@ window.customElements.define('weave-app', class extends connect(store)(LitElemen
                     margin: 0;
                     font-size: 21px;
                     color: var(--primary-color);
+                }
+
+                main {
+                    grid-area: main;
                 }
 
                 .page {
@@ -86,7 +118,7 @@ window.customElements.define('weave-app', class extends connect(store)(LitElemen
             </main>
 
             <footer>
-                
+                <p>&copy; 2019</p>
             </footer>
         `;
     }

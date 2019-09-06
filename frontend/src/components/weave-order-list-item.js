@@ -36,14 +36,14 @@ window.customElements.define('weave-order-list-item', class extends LitElement {
 					display: flex;
 				}
 
-				.order-item:hover {
-					background: rgba(0, 0, 0, 0.1);
-				}
-
 				.order-item.active {
 					background-color: rgba(0,0,0,0.05);
 					box-shadow: var(--box-shadow);
 					z-index: 1;
+				}
+
+				.order-item:hover {
+					background: rgba(0, 0, 0, 0.1);
 				}
 
 				.time {

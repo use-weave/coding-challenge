@@ -35,42 +35,45 @@ window.customElements.define('weave-driver-list', class extends connect(store)(L
             SharedStyles,
             css`
                 :host {
-                    margin-bottom: 1rem;
+                    border-bottom: 1px solid rgba(0,0,0,0.2);
+                    grid-area: driver-list;
+                    padding: 0.5rem 0;
                 }
 
                 h2 {
                     font-size: 1.5rem;
-                    padding: 0.25rem 1rem;
+                    padding: 0rem 1rem;
                 }
             `,
         ];
     }
 
     render() {
-        console.log('_assignments', this._assignments);
         return html`
             <section>
                 <h2>Drivers</h2>
 
-                ${this._drivers.map(driver => html`
-                    <weave-driver-list-item
-                        @assign-orders="${this._assignOrders}"
-                        driver_id="${driver.id}"
-                        name="${driver.name}"
-                        order_count="${
-                            this._assignments.drivers.hasOwnProperty(driver.id)
-                                ? this._assignments.drivers[driver.id].length
-                                : 0
-                        }"
-                        orders_selected="${this._selectedOrdersCount}"
-                        status="${driver.status}"
-                    ></weave-driver-list-item>
-                    <weave-driver-detail
-                        driver_id="${driver.id}"
-                        vehicle_license="${driver.vehicle_license}"
-                        vehicle_name="${driver.vehicle_name}"
-                    ></weave-driver-detail>
-                `)}
+                <div class="list-wrapper">
+                    ${this._drivers.map(driver => html`
+                        <weave-driver-list-item
+                            @assign-orders="${this._assignOrders}"
+                            driver_id="${driver.id}"
+                            name="${driver.name}"
+                            order_count="${
+                                this._assignments.drivers.hasOwnProperty(driver.id)
+                                    ? this._assignments.drivers[driver.id].length
+                                    : 0
+                            }"
+                            orders_selected="${this._selectedOrdersCount}"
+                            status="${driver.status}"
+                        ></weave-driver-list-item>
+                        <weave-driver-detail
+                            driver_id="${driver.id}"
+                            vehicle_license="${driver.vehicle_license}"
+                            vehicle_name="${driver.vehicle_name}"
+                        ></weave-driver-detail>
+                    `)}
+                </div>
 
             </section>
         `;
