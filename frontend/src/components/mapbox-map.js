@@ -1,7 +1,7 @@
 import { LitElement, css, html } from 'lit-element';
 
 // import marker from './marker-15.svg';
-import mapboxCSS from './mapbox-gl.css';
+import { mapboxCSS } from './mapbox-styles.js';
 
 window.customElements.define('mapbox-map', class extends LitElement {
 	constructor() {
@@ -11,6 +11,7 @@ window.customElements.define('mapbox-map', class extends LitElement {
 
 	static get styles() {
 		return [
+			mapboxCSS,
 			css`
 				:host {
 					grid-area: map;
