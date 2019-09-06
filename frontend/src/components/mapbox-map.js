@@ -1,7 +1,7 @@
 import { LitElement, css, html } from 'lit-element';
 
 // import marker from './marker-15.svg';
-import mapboxCSS from './src/components/mapbox-gl.css';
+import mapboxCSS from './mapbox-gl.css';
 
 window.customElements.define('mapbox-map', class extends LitElement {
 	constructor() {
