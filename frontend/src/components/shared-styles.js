@@ -57,4 +57,9 @@ export const SharedStyles = css`
   h1, h2, h3 {
     font-family: 'Montserrat', sans-serif;
   }
+
+  .list-wrapper {
+  	height: calc((100vh - 11rem) / 2 - 1px);
+  	overflow: scroll;
+  }
 `;
