@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"encoding/json"
 )
 
 // Payload is a definition of what will be posted to the API endpoint.
@@ -10,7 +11,6 @@ type Payload struct {
 	Keys   []string `json:"keys"`
 	Values []string `json:"values"`
 }
-
 // Result is a response type that we expect in return.
 type Result map[string]string
 
@@ -23,7 +23,21 @@ func handlePost() http.Handler {
 		// on how to update this function to make the test pass.
 		//
 		// Feel free to use the test for some ideas.
-		fmt.Fprintf(w, "Hello world!")
+
+		decoder := json.NewDecoder(r.Body)
+		var pay Payload
+		err := decoder.Decode(&pay)
+		if err != nil {
+		   panic(err)
+		}
+		m := make(map[string]string)
+		for i := 0; i < len(pay.Values); i++ {
+		    m[string(pay.Keys[i])] = pay.Values[i]
+		}
+		fmt.Println(m)
+		mapfin, _ := json.Marshal(m)
+		w.WriteHeader(http.StatusAccepted)
+		fmt.Fprintf(w, string(mapfin))
 	})
 }
 
