@@ -30,7 +30,13 @@ func handlePost() http.Handler {
 		   panic(err)
 		}
 		m := make(map[string]string)
-		for i := 0; i < len(pay.Values); i++ {
+		limit := 0
+		if len(pay.Keys) >= len(pay.Values) {
+			limit = len(pay.Values)
+		} else {
+			limit = len(pay.Keys)
+		}
+		for i := 0; i < limit; i++ {
 		    m[string(pay.Keys[i])] = pay.Values[i]
 		}
 		fmt.Println(m)
