@@ -18,11 +18,10 @@ type Result map[string]string
 func handlePost() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
-		// Right now we are simply taking the writer defined as an argument to this function
-		// and using that to write the text "Hello world!". Using the README, follow the instructions
-		// on how to update this function to make the test pass.
-		//
-		// Feel free to use the test for some ideas.
+		// This is the solution I was able to come up with. In an attempt
+		// to increase speed, I had looked into Unmarshal instead, but
+		// had trouble going from the custom type Payload into the
+		// required []byte type for the first argument to Unmarshal.
 
 		decoder := json.NewDecoder(r.Body)
 		var pay Payload
