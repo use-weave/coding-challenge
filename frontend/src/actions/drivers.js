@@ -1,7 +1,7 @@
 export const SET_STATUS = 'DRIVER_SET_STATUS';
 
-export const setStatus = status => ({
+export const setStatus = (driver, status) => ({
     type: SET_STATUS,
-
-    status,
+    driver,
+    status
 });
