@@ -24,24 +24,25 @@ window.customElements.define('weave-app', class extends connect(store)(LitElemen
             SharedStyles,
             css`
                 :host {
-                    --primary-color: var(--weave-primary-color, #007A71);
                 }
 
                 header {
-                    background-color: white;
-                    color: white;
+                    background-color: var(--primary-color, #007A71);
                     height: 56px;
                     padding: 0 16px;
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                 }
-
+                main {
+                    background-color: white;
+                    color: var(--text-color, #4b5255);
+                }
                 h1 {
                     padding: 0;
                     margin: 0;
                     font-size: 21px;
-                    color: var(--primary-color);
+                    color: white;
                 }
 
                 .page {

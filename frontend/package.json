@@ -5,14 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "polymer serve"
+    "start": "polymer serve --hostname 192.168.33.10 --port 8081"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@polymer/lit-element": "^0.7.1",
+    "@types/nanoid": "^2.1.0",
     "lit-element": "^2.2.1",
     "pwa-helpers": "^0.9.1",
+    "react": "^16.9.0",
+    "react-redux": "^7.1.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2"
   }
 }

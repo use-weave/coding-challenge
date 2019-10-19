@@ -14,7 +14,18 @@ window.customElements.define('weave-driver', class extends LitElement {
         return [
             SharedStyles,
             css`
-
+            #driverName {
+                color: var(--primary-color);
+                border-radius: 5px;
+                padding: 10px 0px;
+                margin: 5%;
+                box-shadow: rgba(0, 0, 0, 0.22) 0px 1px 6px, rgba(0, 0, 0, 0.22) 0px 1px 4px;
+                width: 90%;
+            }
+            #driverName:hover {
+                cursor: pointer;
+                box-shadow: rgba(0, 0, 0, 0.20) 0px 3px 10px, rgba(0, 0, 0, 0.28) 0px 3px 10px;
+            }
             `,
         ];
     }
@@ -22,7 +33,7 @@ window.customElements.define('weave-driver', class extends LitElement {
     render() {
         return html`
             <div>
-                <h3>${this.name}</h3>
+                <button id="driverName">${this.name}</button>
             </div>
         `;
     }

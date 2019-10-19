@@ -1,5 +1,5 @@
 import {
-    /* */
+    SET_STATUS
 } from '../actions/drivers.js';
 
 const INITIAL_STATE = [
@@ -13,7 +13,7 @@ const INITIAL_STATE = [
     {
         id: '1239214',
         name: 'Dustin Higginbotham',
-        status: 'inactive',
+        status: 'active',
         vehicle_name: 'Outback',
         vehicle_license: '124-XYZ',
     },
@@ -28,9 +28,12 @@ const INITIAL_STATE = [
 
 const drivers = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case SET_STATUS:
+            return state.map(someState => 
+                someState.name === action.driver ? {...someState, status: action.status} : {...someState});
         default:
             return state;
     }
-}
+};
 
 export default drivers;

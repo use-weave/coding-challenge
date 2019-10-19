@@ -1,3 +1,4 @@
+import { SET_ORDER_STATUS } from "../actions/orders";
 
 const INITIAL_STATE = [
     {
@@ -10,6 +11,7 @@ const INITIAL_STATE = [
         address_city: 'Boulder',
         address_state: 'CO',
         address_zip: '80303',
+        status: 'active',
     },
     {
         id: '1238124751',
@@ -21,6 +23,7 @@ const INITIAL_STATE = [
         address_city: 'Aurora',
         address_state: 'CO',
         address_zip: '90210',
+        status: 'active',
     },
     {
         id: '1238124756',
@@ -32,6 +35,7 @@ const INITIAL_STATE = [
         address_city: 'Ft Collins',
         address_state: 'CO',
         address_zip: '81091',
+        status: 'active',
     },
     {
         id: '1238124757',
@@ -43,11 +47,15 @@ const INITIAL_STATE = [
         address_city: 'Greeley',
         address_state: 'CO',
         address_zip: '81920',
+        status: 'active',
     }
 ];
 
 const orders = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        case SET_ORDER_STATUS:
+            return state.map(someState => 
+                someState.id === action.order && action.status !== 'complete' ? {...someState, status: action.status}: {...someState});
         default:
             return state;
     }
